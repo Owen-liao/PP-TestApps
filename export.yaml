@@ -51,13 +51,13 @@ on:
       user-name: ${{env.USERNAME}}
       password-secret: ${{secrets.password}}
       solution-name: ${{github.event.inputs.solution_name}}
-      solution-output-file: ${( github.event.inputs.solution_exported_folder}}/${{ github.event.inputs.solution_name}}.zip
+      solution-output-file: ${{github.event.inputs.solution_exported_folder}}/${{ github.event.inputs.solution_name}}.zip
 
     name: unpack-solution action
     uses: microsoft/powerplatform-actions/unpack-solution@0.4.0
     with:
       solution-file: ${{ github.event.inputs.solution_exported_folder}}/${{github.event.inputs.solution_name}}.zip
-      solution-folder: ${( github.event.inputs.solution_folder}}/${{ github.event.inputs.solution_nane }}
+      solution-folder: ${{github.event.inputs.solution_folder}}/${{ github.event.inputs.solution_nane }}
       solution-type: 'Unmanaged'
       overwrite-files: true
     
@@ -65,7 +65,7 @@ on:
     uses: microsoft/powerplatform-actions/branch-solution@0.4.0
     with:
       solution-folder: ${{github.event.inputs.solution_folder}}/${{github.event.inputs.solution_nane}}
-      solution-target-folder: $({ github.event.inputs.solution_target_folder})/$(( github.event.inputs.solution_name }}
+      solution-target-folder: ${{github.event.inputs.solution_target_folder}}/$(( github.event.inputs.solution_name }}
       repo-token: ${{secrets.GITHUB_TOKEN}}
       allow-enpty-commit: true
     
@@ -82,7 +82,7 @@ on:
       environment-url: ${{env.ENVIRONMENT_URL}}
       user-name:${{env.USERNAME}}password-secret: ${{ secrets.password }}
       solution-name: ${{ github.event.inputs.solution_name }}
-      solution-output-file: S{{github.event.inputs.solution_exported_folder})/S{( github.event.inputs.solution_name }}.zip
+      solution-output-file: ${{github.event.inputs.solution_exported_folder}}/${{github.event.inputs.solution_name}}.zip
       
       name: unpack-solution action
       uses: microsoft/powerplatform-actions/unpack-solution@0.4.0
